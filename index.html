@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>San Marcos 2026 · recursos por área</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(145deg, #f0f5ff 0%, #e8eefa 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* fondo dinámico con partículas azules/rojas */
+    .particulas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .particulas span {
+      position: absolute;
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      animation: flotar 12s infinite ease-in-out;
+    }
+
+    @keyframes flotar {
+      0% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
+      50% { transform: translateY(-30px) rotate(180deg); opacity: 0.6; }
+      100% { transform: translateY(0) rotate(360deg); opacity: 0.2; }
+    }
+
+    .contenedor {
+      max-width: 1400px;
+      width: 100%;
+      position: relative;
+      z-index: 10;
+      animation: aparecer 0.9s ease-out;
+    }
+
+    @keyframes aparecer {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* header con degradado azul/rojo */
+    .header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .header h1 {
+      font-size: 3.3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #003f88 0%, #d62828 70%, #003f88 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 8px 18px rgba(0,63,136,0.2);
+      animation: brillo 3s infinite;
+    }
+
+    @keyframes brillo {
+      0% { filter: drop-shadow(0 0 4px rgba(214,40,40,0.3)); }
+      50% { filter: drop-shadow(0 0 12px rgba(0,63,136,0.5)); }
+      100% { filter: drop-shadow(0 0 4px rgba(214,40,40,0.3)); }
+    }
+
+    .header p {
+      font-size: 1.3rem;
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(6px);
+      display: inline-block;
+      padding: 0.7rem 2.2rem;
+      border-radius: 60px;
+      border: 1px solid rgba(0,63,136,0.2);
+      color: #1e2b3c;
+      font-weight: 500;
+    }
+
+    /* grilla de tarjetas */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0 3rem;
+    }
+
+    /* tarjetas estilo vidrio */
+    .tarjeta {
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(12px);
+      border-radius: 40px;
+      padding: 2rem 1.8rem;
+      box-shadow: 0 20px 40px -12px rgba(0,35,70,0.25);
+      border: 1px solid rgba(0,63,136,0.25);
+      transition: all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+      animation: levitar 7s infinite ease-in-out;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tarjeta:hover {
+      transform: translateY(-10px) scale(1.01);
+      border-color: #d62828;
+      box-shadow: 0 32px 60px -12px #003f8866;
+      background: rgba(255,255,255,0.95);
+    }
+
+    @keyframes levitar {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .tarjeta:nth-child(1) { animation-delay: 0s; }
+    .tarjeta:nth-child(2) { animation-delay: 0.3s; }
+    .tarjeta:nth-child(3) { animation-delay: 0.6s; }
+    .tarjeta:nth-child(4) { animation-delay: 0.9s; }
+
+    /* fecha */
+    .fecha {
+      font-size: 1.6rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 3px solid rgba(0,63,136,0.2);
+    }
+
+    .fecha i {
+      background: #003f88;
+      color: white;
+      padding: 10px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      box-shadow: 0 6px 14px rgba(0,63,136,0.4);
+    }
+
+    /* cada área ocupa su espacio */
+    .area-item {
+      margin-bottom: 1.8rem;
+      background: rgba(255,255,255,0.3);
+      border-radius: 28px;
+      padding: 1rem 1.2rem;
+      transition: background 0.2s;
+      border: 1px solid rgba(0,63,136,0.1);
+    }
+
+    .area-item:hover {
+      background: rgba(214,40,40,0.03);
+      border-color: rgba(214,40,40,0.2);
+    }
+
+    .area-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.8rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .area-badge {
+      background: #d62828;
+      color: white;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.3rem 1.2rem;
+      border-radius: 30px;
+      box-shadow: 0 2px 8px rgba(214,40,40,0.4);
+      display: inline-block;
+    }
+
+    .area-desc {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #1f2a36;
+    }
+
+    /* contenedor de los 4 botones (enlaces) */
+    .recursos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 0.5rem;
+      justify-content: flex-start;
+    }
+
+    .recurso-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #f0f4fe;
+      color: #003f88;
+      padding: 0.5rem 1rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: 1px solid rgba(0,63,136,0.3);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+    }
+
+    .recurso-link i {
+      font-size: 1rem;
+    }
+
+    /* variaciones de color para cada tipo (sin perder armonía) */
+    .recurso-link.resolucion { background: #e0e9ff; color: #003f88; }
+    .recurso-link.resolucion:hover { background: #003f88; color: white; border-color: #d62828; }
+
+    .recurso-link.pdf { background: #ffe6e6; color: #b11; }
+    .recurso-link.pdf:hover { background: #d62828; color: white; }
+
+    .recurso-link.corregido { background: #dff0f0; color: #0b5e7c; }
+    .recurso-link.corregido:hover { background: #0b5e7c; color: white; }
+
+    .recurso-link.hoja { background: #ecf7e9; color: #1f7b4d; }
+    .recurso-link.hoja:hover { background: #1f7b4d; color: white; }
+
+    /* ajuste para que los enlaces no se desborden */
+    .recurso-link span {
+      white-space: nowrap;
+    }
+
+    /* en caso de móvil */
+    @media (max-width: 500px) {
+      .recurso-link span {
+        white-space: normal;
+        font-size: 0.75rem;
+      }
+      .recursos {
+        gap: 0.5rem;
+      }
+    }
+
+    /* botón general drive (opcional, lo mantenemos) */
+    .btn-drive-general {
+      background: #d62828;
+      color: white;
+      border: none;
+      padding: 1.2rem 3rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+      border-radius: 60px;
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 20px 30px -8px #9e1f2c;
+      transition: all 0.3s;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.2);
+      animation: pulso 2.2s infinite;
+    }
+
+    .btn-drive-general:hover {
+      background: #b11f2a;
+      transform: scale(1.05);
+      box-shadow: 0 30px 40px -8px #7f1720;
+      animation: none;
+    }
+
+    @keyframes pulso {
+      0% { box-shadow: 0 0 0 0 rgba(214,40,40,0.6); }
+      70% { box-shadow: 0 0 0 15px rgba(214,40,40,0); }
+      100% { box-shadow: 0 0 0 0 rgba(214,40,40,0); }
+    }
+
+    footer {
+      margin-top: 4rem;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(5px);
+      padding: 1.2rem 2rem;
+      border-radius: 60px;
+      color: #1f3a4c;
+      font-weight: 500;
+      border: 1px solid rgba(0,63,136,0.2);
+      text-align: center;
+    }
+
+    footer i {
+      color: #d62828;
+    }
+  </style>
+</head>
+<body>
+  <div class="particulas" id="particulas"></div>
+
+  <div class="contenedor">
+    <div class="header">
+      <h1>🔵 validación San Marcos 2026 🔴</h1>
+      <p><i class="fas fa-calendar-alt" style="color:#d62828;"></i> Material oficial · enlaces directos a Drive</p>
+    </div>
+
+    <div class="grid">
+      <!-- TARJETA 1: Sáb 7 marzo · D y E -->
+      <div class="tarjeta">
+        <div class="fecha"><i class="fas fa-calendar-day"></i> Sáb 7 · marzo 2026</div>
+        <!-- Área D -->
+        <div class="area-item">
+          <div class="area-header">
+            <span class="area-badge">Área D</span>
+            <span class="area-desc">Ciencias Económicas y de la Gestión</span>
+          </div>
+          <div class="recursos">
+            <a href="https://drive.google.com/drive/folders/1mmMPpUVkEV1izv2-9xV5YIlH11qKXNRq?usp=drive_link" class="recurso-link resolucion" target="_blank"><i class="fas fa-file-signature"></i><span>RESOLUCIÓN</span></a>
+            <a href="https://drive.google.com/drive/folders/1DcFncqcdH0gi6O0GNi3wpqDHVs2ObQnq?usp=drive_link" class="recurso-link pdf" target="_blank"><i class="fas fa-file-pdf"></i><span>PDF CORRECCIÓN</span></a>
+            <a href="https://drive.google.com/drive/folders/1tXY3gfDip5VRp3tX3WpDICiw_ulxHO8c?usp=drive_link" class="recurso-link corregido" target="_blank"><i class="fas fa-file-check"></i><span>YA CORREGIDOS</span></a>
+            <a href="https://docs.google.com/spreadsheets/d/1LVIcPalGEGemPFJwWVLVq-9bPAoAJVY-yCzyV69ghqo/edit?gid=0#gid=0" class="recurso-link hoja" target="_blank"><i class="fas fa-table"></i><span>HOJA DE CÁLCULO</span></a>
+          </div>
+        </div>
+        <!-- Área E -->
+        <div class="area-item">
+          <div class="area-header">
+            <span class="area-badge">Área E</span>
+            <span class="area-desc">Humanidades y Cs. Jurídicas y Sociales</span>
+          </div>
+          <div class="recursos">
+            <a href="https://drive.google.com/drive/folders/1mmMPpUVkEV1izv2-9xV5YIlH11qKXNRq?usp=drive_link" class="recurso-link resolucion" target="_blank"><i class="fas fa-file-signature"></i><span>RESOLUCIÓN</span></a>
+            <a href="https://drive.google.com/drive/folders/1DcFncqcdH0gi6O0GNi3wpqDHVs2ObQnq?usp=drive_link" class="recurso-link pdf" target="_blank"><i class="fas fa-file-pdf"></i><span>PDF CORRECCIÓN</span></a>
+            <a href="https://drive.google.com/drive/folders/1tXY3gfDip5VRp3tX3WpDICiw_ulxHO8c?usp=drive_link" class="recurso-link corregido" target="_blank"><i class="fas fa-file-check"></i><span>YA CORREGIDOS</span></a>
+            <a href="https://docs.google.com/spreadsheets/d/1LVIcPalGEGemPFJwWVLVq-9bPAoAJVY-yCzyV69ghqo/edit?gid=0#gid=0" class="recurso-link hoja" target="_blank"><i class="fas fa-table"></i><span>HOJA DE CÁLCULO</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TARJETA 2: Dom 8 marzo · B y C -->
+      <div class="tarjeta">
+        <div class="fecha"><i class="fas fa-calendar-day"></i> Dom 8 · marzo 2026</div>
+        <!-- Área B -->
+        <div class="area-item">
+          <div class="area-header">
+            <span class="area-badge">Área B</span>
+            <span class="area-desc">Ciencias Básicas</span>
+          </div>
+          <div class="recursos">
+            <a href="https://docs.google.com/spreadsheets/d/1LVIcPalGEGemPFJwWVLVq-9bPAoAJVY-yCzyV69ghqo/edit?gid=0#gid=0" class="recurso-link resolucion" target="_blank"><i class="fas fa-file-signature"></i><span>RESOLUCIÓN</span></a>
+            <a href="https://drive.google.com/drive/folders/15GRtCGJOo4HT3srmnOnwno_Zb-pR6dZ1?usp=drive_link" class="recurso-link pdf" target="_blank"><i class="fas fa-file-pdf"></i><span>PDF CORRECCIÓN</span></a>
+            <a href="https://drive.google.com/drive/folders/1mjzMeyMImIs0808AVziuTFHp2LuikMMJ?usp=drive_link" class="recurso-link corregido" target="_blank"><i class="fas fa-file-check"></i><span>YA CORREGIDOS</span></a>
+            <a href="https://docs.google.com/spreadsheets/d/1EqNFwpesI67QvVLpQD2XvBpAIHe13-BZ6QZuHnowEYg/edit?usp=drive_link" class="recurso-link hoja" target="_blank"><i class="fas fa-table"></i><span>HOJA DE CÁLCULO</span></a>
+          </div>
+        </div>
+        <!-- Área C -->
+        <div class="area-item">
+          <div class="area-header">
+            <span class="area-badge">Área C</span>
+            <span class="area-desc">Ingeniería</span>
+          </div>
+          <div class="recursos">
+            <a href="https://docs.google.com/spreadsheets/d/1LVIcPalGEGemPFJwWVLVq-9bPAoAJVY-yCzyV69ghqo/edit?gid=0#gid=0" class="recurso-link resolucion" target="_blank"><i class="fas fa-file-signature"></i><span>RESOLUCIÓN</span></a>
+            <a href="https://drive.google.com/drive/folders/15GRtCGJOo4HT3srmnOnwno_Zb-pR6dZ1?usp=drive_link" class="recurso-link pdf" target="_blank"><i class="fas fa-file-pdf"></i><span>PDF CORRECCIÓN</span></a>
+            <a href="https://drive.google.com/drive/folders/1mjzMeyMImIs0808AVziuTFHp2LuikMMJ?usp=drive_link" class="recurso-link corregido" target="_blank"><i class="fas fa-file-check"></i><span>YA CORREGIDOS</span></a>
+            <a href="https://docs.google.com/spreadsheets/d/1EqNFwpesI67QvVLpQD2XvBpAIHe13-BZ6QZuHnowEYg/edit?usp=drive_link" class="recurso-link hoja" target="_blank"><i class="fas fa-table"></i><span>HOJA DE CÁLCULO</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TARJETA 3: Sáb 14 marzo · Área A -->
+      <div class="tarjeta">
+        <div class="fecha"><i class="fas fa-calendar-day"></i> Sáb 14 · marzo 2026</div>
+        <!-- Área A -->
+        <div class="area-item">
+          <div class="area-header">
+            <span class="area-badge">Área A</span>
+            <span class="area-desc">Ciencias de la Salud <span style="font-size:0.9rem;">(excl. Medicina)</span></span>
+          </div>
+          <div class="recursos">
+            <a href="https://drive.google.com/drive/folders/1ohpWbpQ5rTO5uQJ8aiWVD-MR2MxkcY0_?usp=drive_link" class="recurso-link resolucion" target="_blank"><i class="fas fa-file-signature"></i><span>RESOLUCIÓN</span></a>
+            <a href="https://drive.google.com/drive/folders/1QaXxAj_u0W-zPtz_15b6SZyF1XSfwCrG?usp=drive_link" class="recurso-link pdf" target="_blank"><i class="fas fa-file-pdf"></i><span>PDF CORRECCIÓN</span></a>
+            <a href="https://drive.google.com/drive/folders/1fCQkluo_tLARF8ixcH0LDLaAWhx0h7qm?usp=drive_link" class="recurso-link corregido" target="_blank"><i class="fas fa-file-check"></i><span>YA CORREGIDOS</span></a>
+            <a href="https://docs.google.com/spreadsheets/d/1hSClie67tU42DGpQOzSrUvR773MFZGaaBdvMjAaG4n0/edit?usp=drive_link" class="recurso-link hoja" target="_blank"><i class="fas fa-table"></i><span>HOJA DE CÁLCULO</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TARJETA 4: Dom 15 marzo · Medicina Humana -->
+      <div class="tarjeta">
+        <div class="fecha"><i class="fas fa-calendar-day"></i> Dom 15 · marzo 2026</div>
+        <!-- Medicina Humana -->
+        <div class="area-item">
+          <div class="area-header">
+            <span class="area-badge" style="background:#0b5e7c;">Medicina</span>
+            <span class="area-desc"><strong>Medicina Humana</strong></span>
+          </div>
+          <div class="recursos">
+            <a href="https://drive.google.com/drive/folders/15MLCBBhSIlwIBMsr8eNwahKtq3ihVnhX?usp=drive_link" class="recurso-link resolucion" target="_blank"><i class="fas fa-file-signature"></i><span>RESOLUCIÓN</span></a>
+            <a href="https://drive.google.com/drive/folders/1Fu9ejlcap3P9mKkg-jihlMbEIVFywtu2?usp=drive_link" class="recurso-link pdf" target="_blank"><i class="fas fa-file-pdf"></i><span>PDF CORRECCIÓN</span></a>
+            <a href="https://drive.google.com/drive/folders/15l0cUqwDKsBckVweVyOUV0c1V4Q5y7SX?usp=drive_link" class="recurso-link corregido" target="_blank"><i class="fas fa-file-check"></i><span>YA CORREGIDOS</span></a>
+            <a href="https://docs.google.com/spreadsheets/d/1VhRTbhyH55HLZhDyZbaCP9PpMzocdIK5CsIojPFDPmI/edit?usp=drive_link" class="recurso-link hoja" target="_blank"><i class="fas fa-table"></i><span>HOJA DE CÁLCULO</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botón general a drive (opcional) -->
+    <div style="text-align:center; margin: 2rem 0 1rem;">
+      <p style="margin-top:1.2rem; background:rgba(255,255,255,0.6); padding:8px 25px; border-radius:40px; display:inline-block; backdrop-filter:blur(4px); color:#003f88;">
+        <i class="fas fa-sync-alt" style="color:#d62828;"></i> Enlaces actualizados permanentemente
+      </p>
+    </div>
+
+    <footer>
+      <i class="fas fa-university"></i> UNMSM · Validación 2026 · <i class="fas fa-map-pin"></i> Áreas D, E, B, C, A y Medicina
+    </footer>
+  </div>
+
+  <!-- partículas aleatorias azules y rojas -->
+  <script>
+    (function() {
+      const particulas = document.getElementById('particulas');
+      if (!particulas) return;
+      for (let i = 0; i < 35; i++) {
+        const span = document.createElement('span');
+        const size = Math.floor(Math.random() * 12 + 4);
+        const left = Math.random() * 100;
+        const top = Math.random() * 100;
+        const duracion = Math.random() * 12 + 6;
+        const retraso = Math.random() * 8;
+        span.style.width = size + 'px';
+        span.style.height = size + 'px';
+        span.style.left = left + '%';
+        span.style.top = top + '%';
+        span.style.animation = `flotar ${duracion}s infinite ease-in-out ${retraso}s`;
+        if (Math.random() > 0.5) {
+          span.style.background = 'rgba(0, 63, 136, 0.25)';
+          span.style.boxShadow = `0 0 ${size * 3}px rgba(0, 63, 136, 0.4)`;
+        } else {
+          span.style.background = 'rgba(214, 40, 40, 0.25)';
+          span.style.boxShadow = `0 0 ${size * 3}px rgba(214, 40, 40, 0.4)`;
+        }
+        particulas.appendChild(span);
+      }
+    })();
+  </script>
+  <!-- simular enlaces (demostración) -->
+  <script>
+    document.querySelectorAll('.recurso-link, .btn-drive-general').forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (link.getAttribute('href') === '#') {
+          e.preventDefault();
+          alert('🔗 Enlace simbólico a Google Drive. Reemplazar con URL real.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
