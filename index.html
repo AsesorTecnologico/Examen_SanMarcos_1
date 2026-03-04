@@ -205,7 +205,7 @@
       color: #1f2a36;
     }
 
-    /* contenedor de los 4 botones (enlaces) */
+    /* contenedor de los 5 botones (enlaces) */
     .recursos {
       display: flex;
       flex-wrap: wrap;
@@ -234,7 +234,7 @@
       font-size: 1rem;
     }
 
-    /* variaciones de color para cada tipo (sin perder armonía) */
+    /* variaciones de color para cada tipo */
     .recurso-link.resolucion { background: #e0e9ff; color: #003f88; }
     .recurso-link.resolucion:hover { background: #003f88; color: white; border-color: #d62828; }
 
@@ -247,12 +247,11 @@
     .recurso-link.hoja { background: #ecf7e9; color: #1f7b4d; }
     .recurso-link.hoja:hover { background: #1f7b4d; color: white; }
 
-    /* ajuste para que los enlaces no se desborden */
-    .recurso-link span {
-      white-space: nowrap;
-    }
+    /* nuevo botón diapositivas (violeta suave) */
+    .recurso-link.diapositivas { background: #f0e4ff; color: #6b2e8f; }
+    .recurso-link.diapositivas:hover { background: #6b2e8f; color: white; border-color: #d62828; }
 
-    /* en caso de móvil */
+    /* ajuste responsive */
     @media (max-width: 500px) {
       .recurso-link span {
         white-space: normal;
@@ -261,38 +260,6 @@
       .recursos {
         gap: 0.5rem;
       }
-    }
-
-    /* botón general drive (opcional, lo mantenemos) */
-    .btn-drive-general {
-      background: #d62828;
-      color: white;
-      border: none;
-      padding: 1.2rem 3rem;
-      font-size: 1.3rem;
-      font-weight: 600;
-      border-radius: 60px;
-      display: inline-flex;
-      align-items: center;
-      gap: 1rem;
-      box-shadow: 0 20px 30px -8px #9e1f2c;
-      transition: all 0.3s;
-      text-decoration: none;
-      border: 2px solid rgba(255,255,255,0.2);
-      animation: pulso 2.2s infinite;
-    }
-
-    .btn-drive-general:hover {
-      background: #b11f2a;
-      transform: scale(1.05);
-      box-shadow: 0 30px 40px -8px #7f1720;
-      animation: none;
-    }
-
-    @keyframes pulso {
-      0% { box-shadow: 0 0 0 0 rgba(214,40,40,0.6); }
-      70% { box-shadow: 0 0 0 15px rgba(214,40,40,0); }
-      100% { box-shadow: 0 0 0 0 rgba(214,40,40,0); }
     }
 
     footer {
@@ -332,10 +299,12 @@
             <span class="area-desc">Ciencias Económicas y de la Gestión</span>
           </div>
           <div class="recursos">
-            <a href="https://drive.google.com/drive/folders/1mmMPpUVkEV1izv2-9xV5YIlH11qKXNRq?usp=drive_link" class="recurso-link resolucion" target="_blank"><i class="fas fa-file-signature"></i><span>RESOLUCIÓN</span></a>
-            <a href="https://drive.google.com/drive/folders/1DcFncqcdH0gi6O0GNi3wpqDHVs2ObQnq?usp=drive_link" class="recurso-link pdf" target="_blank"><i class="fas fa-file-pdf"></i><span>PDF CORRECCIÓN</span></a>
-            <a href="https://drive.google.com/drive/folders/1tXY3gfDip5VRp3tX3WpDICiw_ulxHO8c?usp=drive_link" class="recurso-link corregido" target="_blank"><i class="fas fa-file-check"></i><span>YA CORREGIDOS</span></a>
+            <!--<a href="https://drive.google.com/drive/folders/1mmMPpUVkEV1izv2-9xV5YIlH11qKXNRq?usp=drive_link" class="recurso-link resolucion" target="_blank"><i class="fas fa-file-signature"></i><span>RESOLUCIÓN</span></a>-->
+            <!--<a href="https://drive.google.com/drive/folders/1DcFncqcdH0gi6O0GNi3wpqDHVs2ObQnq?usp=drive_link" class="recurso-link pdf" target="_blank"><i class="fas fa-file-pdf"></i><span>PDF CORRECCIÓN</span></a>-->
+            <!--<a href="https://drive.google.com/drive/folders/1tXY3gfDip5VRp3tX3WpDICiw_ulxHO8c?usp=drive_link" class="recurso-link corregido" target="_blank"><i class="fas fa-file-check"></i><span>YA CORREGIDOS</span></a>-->
             <a href="https://docs.google.com/spreadsheets/d/1LVIcPalGEGemPFJwWVLVq-9bPAoAJVY-yCzyV69ghqo/edit?gid=0#gid=0" class="recurso-link hoja" target="_blank"><i class="fas fa-table"></i><span>HOJA DE CÁLCULO</span></a>
+            <!-- NUEVO BOTÓN DIAPOSITIVAS -->
+            <!--<a href="https://drive.google.com/drive/folders/17UNuY3SfYgWPIyGw5jVCnzb8NGqYFotw?usp=drive_link" class="recurso-link diapositivas" target="_blank"><i class="fas fa-file-powerpoint"></i><span>DIAPOSITIVAS</span></a>-->
           </div>
         </div>
         <!-- Área E -->
@@ -349,6 +318,7 @@
             <a href="https://drive.google.com/drive/folders/1DcFncqcdH0gi6O0GNi3wpqDHVs2ObQnq?usp=drive_link" class="recurso-link pdf" target="_blank"><i class="fas fa-file-pdf"></i><span>PDF CORRECCIÓN</span></a>
             <a href="https://drive.google.com/drive/folders/1tXY3gfDip5VRp3tX3WpDICiw_ulxHO8c?usp=drive_link" class="recurso-link corregido" target="_blank"><i class="fas fa-file-check"></i><span>YA CORREGIDOS</span></a>
             <a href="https://docs.google.com/spreadsheets/d/1LVIcPalGEGemPFJwWVLVq-9bPAoAJVY-yCzyV69ghqo/edit?gid=0#gid=0" class="recurso-link hoja" target="_blank"><i class="fas fa-table"></i><span>HOJA DE CÁLCULO</span></a>
+            <a href="#" class="recurso-link diapositivas" target="_blank"><i class="fas fa-file-powerpoint"></i><span>DIAPOSITIVAS</span></a>
           </div>
         </div>
       </div>
@@ -363,10 +333,11 @@
             <span class="area-desc">Ciencias Básicas</span>
           </div>
           <div class="recursos">
-            <a href="https://drive.google.com/drive/folders/1BtNjLVvOpWV2a728i6GVCs_rh9PzyFvv?usp=sharing" class="recurso-link resolucion" target="_blank"><i class="fas fa-file-signature"></i><span>RESOLUCIÓN</span></a>
-            <a href="https://drive.google.com/drive/folders/15GRtCGJOo4HT3srmnOnwno_Zb-pR6dZ1?usp=drive_link" class="recurso-link pdf" target="_blank"><i class="fas fa-file-pdf"></i><span>PDF CORRECCIÓN</span></a>
-            <a href="https://drive.google.com/drive/folders/1mjzMeyMImIs0808AVziuTFHp2LuikMMJ?usp=drive_link" class="recurso-link corregido" target="_blank"><i class="fas fa-file-check"></i><span>YA CORREGIDOS</span></a>
+            <!--<a href="https://drive.google.com/drive/folders/1BtNjLVvOpWV2a728i6GVCs_rh9PzyFvv?usp=sharing" class="recurso-link resolucion" target="_blank"><i class="fas fa-file-signature"></i><span>RESOLUCIÓN</span></a>-->
+            <!--<a href="https://drive.google.com/drive/folders/15GRtCGJOo4HT3srmnOnwno_Zb-pR6dZ1?usp=drive_link" class="recurso-link pdf" target="_blank"><i class="fas fa-file-pdf"></i><span>PDF CORRECCIÓN</span></a>-->
+            <!--<a href="https://drive.google.com/drive/folders/1mjzMeyMImIs0808AVziuTFHp2LuikMMJ?usp=drive_link" class="recurso-link corregido" target="_blank"><i class="fas fa-file-check"></i><span>YA CORREGIDOS</span></a>-->
             <a href="https://docs.google.com/spreadsheets/d/1EqNFwpesI67QvVLpQD2XvBpAIHe13-BZ6QZuHnowEYg/edit?usp=drive_link" class="recurso-link hoja" target="_blank"><i class="fas fa-table"></i><span>HOJA DE CÁLCULO</span></a>
+            <!--<a href="#" class="recurso-link diapositivas" target="_blank"><i class="fas fa-file-powerpoint"></i><span>DIAPOSITIVAS</span></a>-->
           </div>
         </div>
         <!-- Área C -->
@@ -380,6 +351,7 @@
             <a href="https://drive.google.com/drive/folders/15GRtCGJOo4HT3srmnOnwno_Zb-pR6dZ1?usp=drive_link" class="recurso-link pdf" target="_blank"><i class="fas fa-file-pdf"></i><span>PDF CORRECCIÓN</span></a>
             <a href="https://drive.google.com/drive/folders/1mjzMeyMImIs0808AVziuTFHp2LuikMMJ?usp=drive_link" class="recurso-link corregido" target="_blank"><i class="fas fa-file-check"></i><span>YA CORREGIDOS</span></a>
             <a href="https://docs.google.com/spreadsheets/d/1EqNFwpesI67QvVLpQD2XvBpAIHe13-BZ6QZuHnowEYg/edit?usp=drive_link" class="recurso-link hoja" target="_blank"><i class="fas fa-table"></i><span>HOJA DE CÁLCULO</span></a>
+            <a href="#" class="recurso-link diapositivas" target="_blank"><i class="fas fa-file-powerpoint"></i><span>DIAPOSITIVAS</span></a>
           </div>
         </div>
       </div>
@@ -398,6 +370,7 @@
             <a href="https://drive.google.com/drive/folders/1QaXxAj_u0W-zPtz_15b6SZyF1XSfwCrG?usp=drive_link" class="recurso-link pdf" target="_blank"><i class="fas fa-file-pdf"></i><span>PDF CORRECCIÓN</span></a>
             <a href="https://drive.google.com/drive/folders/1fCQkluo_tLARF8ixcH0LDLaAWhx0h7qm?usp=drive_link" class="recurso-link corregido" target="_blank"><i class="fas fa-file-check"></i><span>YA CORREGIDOS</span></a>
             <a href="https://docs.google.com/spreadsheets/d/1hSClie67tU42DGpQOzSrUvR773MFZGaaBdvMjAaG4n0/edit?usp=drive_link" class="recurso-link hoja" target="_blank"><i class="fas fa-table"></i><span>HOJA DE CÁLCULO</span></a>
+            <a href="#" class="recurso-link diapositivas" target="_blank"><i class="fas fa-file-powerpoint"></i><span>DIAPOSITIVAS</span></a>
           </div>
         </div>
       </div>
@@ -416,6 +389,7 @@
             <a href="https://drive.google.com/drive/folders/1Fu9ejlcap3P9mKkg-jihlMbEIVFywtu2?usp=drive_link" class="recurso-link pdf" target="_blank"><i class="fas fa-file-pdf"></i><span>PDF CORRECCIÓN</span></a>
             <a href="https://drive.google.com/drive/folders/15l0cUqwDKsBckVweVyOUV0c1V4Q5y7SX?usp=drive_link" class="recurso-link corregido" target="_blank"><i class="fas fa-file-check"></i><span>YA CORREGIDOS</span></a>
             <a href="https://docs.google.com/spreadsheets/d/1VhRTbhyH55HLZhDyZbaCP9PpMzocdIK5CsIojPFDPmI/edit?usp=drive_link" class="recurso-link hoja" target="_blank"><i class="fas fa-table"></i><span>HOJA DE CÁLCULO</span></a>
+            <a href="#" class="recurso-link diapositivas" target="_blank"><i class="fas fa-file-powerpoint"></i><span>DIAPOSITIVAS</span></a>
           </div>
         </div>
       </div>
@@ -461,14 +435,12 @@
       }
     })();
   </script>
-  <!-- simular enlaces (demostración) -->
+  <!-- Recordatorio para enlaces de diapositivas (por si quedan #) -->
   <script>
-    document.querySelectorAll('.recurso-link, .btn-drive-general').forEach(link => {
+    document.querySelectorAll('.recurso-link.diapositivas[href="#"]').forEach(link => {
       link.addEventListener('click', (e) => {
-        if (link.getAttribute('href') === '#') {
-          e.preventDefault();
-          alert('🔗 Enlace simbólico a Google Drive. Reemplazar con URL real.');
-        }
+        e.preventDefault();
+        alert('🔗 Reemplaza este enlace con la URL real de las diapositivas en Drive.');
       });
     });
   </script>
