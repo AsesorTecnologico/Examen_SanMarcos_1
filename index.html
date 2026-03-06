@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>San Marcos 2026 · recursos por área</title>
+  <title>San Marcos 2026 · recursos por área + Meet</title>
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Google Fonts Inter -->
@@ -28,7 +28,7 @@
       overflow-x: hidden;
     }
 
-    /* fondo dinámico con partículas azules/rojas */
+    /* partículas azules/rojas */
     .particulas {
       position: absolute;
       top: 0;
@@ -67,7 +67,7 @@
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* header con degradado azul/rojo */
+    /* header */
     .header {
       text-align: center;
       margin-bottom: 3.5rem;
@@ -103,15 +103,15 @@
       font-weight: 500;
     }
 
-    /* grilla de tarjetas */
+    /* grilla */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
       gap: 2rem;
       margin: 2rem 0 3rem;
     }
 
-    /* tarjetas estilo vidrio */
+    /* tarjetas */
     .tarjeta {
       background: rgba(255,255,255,0.8);
       backdrop-filter: blur(12px);
@@ -164,7 +164,7 @@
       box-shadow: 0 6px 14px rgba(0,63,136,0.4);
     }
 
-    /* cada área ocupa su espacio */
+    /* cada área */
     .area-item {
       margin-bottom: 1.8rem;
       background: rgba(255,255,255,0.3);
@@ -205,12 +205,12 @@
       color: #1f2a36;
     }
 
-    /* contenedor de los 5 botones (enlaces) */
+    /* contenedor de botones (ahora 6) */
     .recursos {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.7rem;
-      margin-top: 0.5rem;
+      gap: 0.6rem;
+      margin-top: 0.7rem;
       justify-content: flex-start;
     }
 
@@ -220,21 +220,22 @@
       gap: 0.4rem;
       background: #f0f4fe;
       color: #003f88;
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 0.9rem;
       border-radius: 40px;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
       text-decoration: none;
       transition: all 0.2s;
       border: 1px solid rgba(0,63,136,0.3);
       box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+      white-space: nowrap;
     }
 
     .recurso-link i {
       font-size: 1rem;
     }
 
-    /* variaciones de color para cada tipo */
+    /* colores específicos para cada tipo */
     .recurso-link.resolucion { background: #e0e9ff; color: #003f88; }
     .recurso-link.resolucion:hover { background: #003f88; color: white; border-color: #d62828; }
 
@@ -247,18 +248,21 @@
     .recurso-link.hoja { background: #ecf7e9; color: #1f7b4d; }
     .recurso-link.hoja:hover { background: #1f7b4d; color: white; }
 
-    /* nuevo botón diapositivas (violeta suave) */
     .recurso-link.diapositivas { background: #f0e4ff; color: #6b2e8f; }
     .recurso-link.diapositivas:hover { background: #6b2e8f; color: white; border-color: #d62828; }
 
-    /* ajuste responsive */
+    /* nuevo botón meet (turquesa) */
+    .recurso-link.meet { background: #d2f0f0; color: #1a7e7e; }
+    .recurso-link.meet:hover { background: #1a7e7e; color: white; border-color: #d62828; }
+
+    /* responsive: si se achica mucho, que el texto se ajuste */
     @media (max-width: 500px) {
       .recurso-link span {
         white-space: normal;
-        font-size: 0.75rem;
+        font-size: 0.7rem;
       }
       .recursos {
-        gap: 0.5rem;
+        gap: 0.4rem;
       }
     }
 
@@ -285,7 +289,7 @@
   <div class="contenedor">
     <div class="header">
       <h1>🔵 validación San Marcos 2026 🔴</h1>
-      <p><i class="fas fa-calendar-alt" style="color:#d62828;"></i> Material oficial · enlaces directos a Drive</p>
+      <p><i class="fas fa-calendar-alt" style="color:#d62828;"></i> Material oficial + salas Meet por área</p>
     </div>
 
     <div class="grid">
@@ -298,13 +302,8 @@
             <span class="area-badge">Área D</span>
             <span class="area-desc">Ciencias Económicas y de la Gestión</span>
           </div>
-          <div class="recursos">
-            <!--<a href="https://drive.google.com/drive/folders/1mmMPpUVkEV1izv2-9xV5YIlH11qKXNRq?usp=drive_link" class="recurso-link resolucion" target="_blank"><i class="fas fa-file-signature"></i><span>RESOLUCIÓN</span></a>-->
-            <!--<a href="https://drive.google.com/drive/folders/1DcFncqcdH0gi6O0GNi3wpqDHVs2ObQnq?usp=drive_link" class="recurso-link pdf" target="_blank"><i class="fas fa-file-pdf"></i><span>PDF CORRECCIÓN</span></a>-->
-            <!--<a href="https://drive.google.com/drive/folders/1tXY3gfDip5VRp3tX3WpDICiw_ulxHO8c?usp=drive_link" class="recurso-link corregido" target="_blank"><i class="fas fa-file-check"></i><span>YA CORREGIDOS</span></a>-->
+          <div class="recursos">         
             <a href="https://docs.google.com/spreadsheets/d/1LVIcPalGEGemPFJwWVLVq-9bPAoAJVY-yCzyV69ghqo/edit?gid=0#gid=0" class="recurso-link hoja" target="_blank"><i class="fas fa-table"></i><span>HOJA DE CÁLCULO</span></a>
-            <!-- NUEVO BOTÓN DIAPOSITIVAS -->
-            <!--<a href="https://drive.google.com/drive/folders/17UNuY3SfYgWPIyGw5jVCnzb8NGqYFotw?usp=drive_link" class="recurso-link diapositivas" target="_blank"><i class="fas fa-file-powerpoint"></i><span>DIAPOSITIVAS</span></a>-->
           </div>
         </div>
         <!-- Área E -->
@@ -319,6 +318,7 @@
             <a href="https://drive.google.com/drive/folders/1tXY3gfDip5VRp3tX3WpDICiw_ulxHO8c?usp=drive_link" class="recurso-link corregido" target="_blank"><i class="fas fa-file-check"></i><span>YA CORREGIDOS</span></a>
             <a href="https://docs.google.com/spreadsheets/d/1LVIcPalGEGemPFJwWVLVq-9bPAoAJVY-yCzyV69ghqo/edit?gid=0#gid=0" class="recurso-link hoja" target="_blank"><i class="fas fa-table"></i><span>HOJA DE CÁLCULO</span></a>
             <a href="https://drive.google.com/drive/folders/17UNuY3SfYgWPIyGw5jVCnzb8NGqYFotw?usp=drive_link" class="recurso-link diapositivas" target="_blank"><i class="fas fa-file-powerpoint"></i><span>DIAPOSITIVAS</span></a>
+            <a href="https://meet.google.com/ebi-yhxj-won" class="recurso-link meet" target="_blank" id="meetE"><i class="fab fa-google"></i><span>SALA MEET</span></a>
           </div>
         </div>
       </div>
@@ -333,11 +333,7 @@
             <span class="area-desc">Ciencias Básicas</span>
           </div>
           <div class="recursos">
-            <!--<a href="https://drive.google.com/drive/folders/1BtNjLVvOpWV2a728i6GVCs_rh9PzyFvv?usp=sharing" class="recurso-link resolucion" target="_blank"><i class="fas fa-file-signature"></i><span>RESOLUCIÓN</span></a>-->
-            <!--<a href="https://drive.google.com/drive/folders/15GRtCGJOo4HT3srmnOnwno_Zb-pR6dZ1?usp=drive_link" class="recurso-link pdf" target="_blank"><i class="fas fa-file-pdf"></i><span>PDF CORRECCIÓN</span></a>-->
-            <!--<a href="https://drive.google.com/drive/folders/1mjzMeyMImIs0808AVziuTFHp2LuikMMJ?usp=drive_link" class="recurso-link corregido" target="_blank"><i class="fas fa-file-check"></i><span>YA CORREGIDOS</span></a>-->
             <a href="https://docs.google.com/spreadsheets/d/1EqNFwpesI67QvVLpQD2XvBpAIHe13-BZ6QZuHnowEYg/edit?usp=drive_link" class="recurso-link hoja" target="_blank"><i class="fas fa-table"></i><span>HOJA DE CÁLCULO</span></a>
-            <!--<a href="#" class="recurso-link diapositivas" target="_blank"><i class="fas fa-file-powerpoint"></i><span>DIAPOSITIVAS</span></a>-->
           </div>
         </div>
         <!-- Área C -->
@@ -352,6 +348,7 @@
             <a href="https://drive.google.com/drive/folders/1mjzMeyMImIs0808AVziuTFHp2LuikMMJ?usp=drive_link" class="recurso-link corregido" target="_blank"><i class="fas fa-file-check"></i><span>YA CORREGIDOS</span></a>
             <a href="https://docs.google.com/spreadsheets/d/1EqNFwpesI67QvVLpQD2XvBpAIHe13-BZ6QZuHnowEYg/edit?usp=drive_link" class="recurso-link hoja" target="_blank"><i class="fas fa-table"></i><span>HOJA DE CÁLCULO</span></a>
             <a href="https://drive.google.com/drive/folders/1hm0bvmA0KJzscEM9m7ZARQj23K0STXZS?usp=drive_link" class="recurso-link diapositivas" target="_blank"><i class="fas fa-file-powerpoint"></i><span>DIAPOSITIVAS</span></a>
+            <a href="https://meet.google.com/kkr-uxbc-yco" class="recurso-link meet" target="_blank" id="meetC"><i class="fab fa-google"></i><span>SALA MEET</span></a>
           </div>
         </div>
       </div>
@@ -371,6 +368,7 @@
             <a href="https://drive.google.com/drive/folders/1fCQkluo_tLARF8ixcH0LDLaAWhx0h7qm?usp=drive_link" class="recurso-link corregido" target="_blank"><i class="fas fa-file-check"></i><span>YA CORREGIDOS</span></a>
             <a href="https://docs.google.com/spreadsheets/d/1hSClie67tU42DGpQOzSrUvR773MFZGaaBdvMjAaG4n0/edit?usp=drive_link" class="recurso-link hoja" target="_blank"><i class="fas fa-table"></i><span>HOJA DE CÁLCULO</span></a>
             <a href="https://drive.google.com/drive/folders/16iX4KqKT6Go4jHEp9y2CDnlHyMY0EOlr?usp=drive_link" class="recurso-link diapositivas" target="_blank"><i class="fas fa-file-powerpoint"></i><span>DIAPOSITIVAS</span></a>
+            <a href="https://meet.google.com/rdg-jmnf-yhn" class="recurso-link meet" target="_blank" id="meetA"><i class="fab fa-google"></i><span>SALA MEET</span></a>
           </div>
         </div>
       </div>
@@ -390,12 +388,13 @@
             <a href="https://drive.google.com/drive/folders/15l0cUqwDKsBckVweVyOUV0c1V4Q5y7SX?usp=drive_link" class="recurso-link corregido" target="_blank"><i class="fas fa-file-check"></i><span>YA CORREGIDOS</span></a>
             <a href="https://docs.google.com/spreadsheets/d/1VhRTbhyH55HLZhDyZbaCP9PpMzocdIK5CsIojPFDPmI/edit?usp=drive_link" class="recurso-link hoja" target="_blank"><i class="fas fa-table"></i><span>HOJA DE CÁLCULO</span></a>
             <a href="https://drive.google.com/drive/folders/19ErqbdWcQkn12wHZAbt6AhE-1Bc7B6oS?usp=drive_link" class="recurso-link diapositivas" target="_blank"><i class="fas fa-file-powerpoint"></i><span>DIAPOSITIVAS</span></a>
+            <a href="https://meet.google.com/wzy-thww-cri" class="recurso-link meet" target="_blank" id="meetMed"><i class="fab fa-google"></i><span>SALA MEET</span></a>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Botón general a drive (opcional) -->
+    <!-- aviso de enlaces actualizados -->
     <div style="text-align:center; margin: 2rem 0 1rem;">
       <p style="margin-top:1.2rem; background:rgba(255,255,255,0.6); padding:8px 25px; border-radius:40px; display:inline-block; backdrop-filter:blur(4px); color:#003f88;">
         <i class="fas fa-sync-alt" style="color:#d62828;"></i> Enlaces actualizados permanentemente
@@ -407,7 +406,7 @@
     </footer>
   </div>
 
-  <!-- partículas aleatorias azules y rojas -->
+  <!-- partículas -->
   <script>
     (function() {
       const particulas = document.getElementById('particulas');
@@ -435,12 +434,13 @@
       }
     })();
   </script>
-  <!-- Recordatorio para enlaces de diapositivas (por si quedan #) -->
+
+  <!-- alerta para enlaces de meet y diapositivas que aún son # -->
   <script>
-    document.querySelectorAll('.recurso-link.diapositivas[href="#"]').forEach(link => {
+    document.querySelectorAll('.recurso-link.meet[href="#"], .recurso-link.diapositivas[href="#"]').forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
-        alert('🔗 Reemplaza este enlace con la URL real de las diapositivas en Drive.');
+        alert('🔗 Enlace de demostración. Reemplaza este # con la URL real de la sala Meet o carpeta de diapositivas en Drive.');
       });
     });
   </script>
